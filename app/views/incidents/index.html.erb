@@ -1,0 +1,118 @@
+<div>
+  <div>
+    <h1>
+      List of all incidents
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new incident
+    </h2>
+
+    <form action="/insert_incident" method="post">
+      <div>
+        <label for="behavior_id_box">
+          Behavior
+        </label>
+
+        <input type="text" id="behavior_id_box" name="query_behavior_id">
+      </div>
+
+      <div>
+        <label for="enrollment_id_box">
+          Enrollment
+        </label>
+
+        <input type="text" id="enrollment_id_box" name="query_enrollment_id">
+      </div>
+
+      <div>
+        <label for="occurred_at_box">
+          Occurred at
+        </label>
+
+        <input type="text" id="occurred_at_box" name="query_occurred_at">
+      </div>
+
+      <button>
+        Create incident
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Behavior
+        </th>
+
+        <th>
+          Enrollment
+        </th>
+
+        <th>
+          Occurred at
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_incidents.each do |an_incident| %>
+      <tr>
+        <td>
+          <%= an_incident.id %>
+        </td>
+
+        <td>
+          <%= an_incident.behavior_id %>
+        </td>
+
+        <td>
+          <%= an_incident.enrollment_id %>
+        </td>
+
+        <td>
+          <%= an_incident.occurred_at %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(an_incident.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(an_incident.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/incidents/<%= an_incident.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

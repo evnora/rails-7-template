@@ -1,0 +1,101 @@
+<div>
+  <div>
+    <h1>
+      Incident #<%= @the_incident.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/incidents">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_incident/<%= @the_incident.id %>">
+          Delete incident
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Behavior
+      </dt>
+      <dd>
+        <%= @the_incident.behavior_id %>
+      </dd>
+
+      <dt>
+        Enrollment
+      </dt>
+      <dd>
+        <%= @the_incident.enrollment_id %>
+      </dd>
+
+      <dt>
+        Occurred at
+      </dt>
+      <dd>
+        <%= @the_incident.occurred_at %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_incident.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_incident.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit incident
+    </h2>
+
+    <form action="/modify_incident/<%= @the_incident.id %>"  method="post" >
+      <div>
+        <label for="behavior_id_box">
+          Behavior
+        </label>
+
+        <input type="text" id="behavior_id_box" name="query_behavior_id" value="<%= @the_incident.behavior_id %>">
+      </div>
+
+      <div>
+        <label for="enrollment_id_box">
+          Enrollment
+        </label>
+
+        <input type="text" id="enrollment_id_box" name="query_enrollment_id" value="<%= @the_incident.enrollment_id %>">
+      </div>
+
+      <div>
+        <label for="occurred_at_box">
+          Occurred at
+        </label>
+
+        <input type="text" id="occurred_at_box" name="query_occurred_at" value="<%= @the_incident.occurred_at %>">
+      </div>
+
+      <button>
+        Update incident
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

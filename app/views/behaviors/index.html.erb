@@ -1,0 +1,102 @@
+<div>
+  <div>
+    <h1>
+      List of all behaviors
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new behavior
+    </h2>
+
+    <form action="/insert_behavior" method="post">
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name">
+      </div>
+
+      <div>
+        <label for="incidents_count_box">
+          Incidents count
+        </label>
+
+        <input type="text" id="incidents_count_box" name="query_incidents_count">
+      </div>
+
+      <button>
+        Create behavior
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Name
+        </th>
+
+        <th>
+          Incidents count
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_behaviors.each do |a_behavior| %>
+      <tr>
+        <td>
+          <%= a_behavior.id %>
+        </td>
+
+        <td>
+          <%= a_behavior.name %>
+        </td>
+
+        <td>
+          <%= a_behavior.incidents_count %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_behavior.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_behavior.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/behaviors/<%= a_behavior.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

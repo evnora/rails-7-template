@@ -1,0 +1,102 @@
+<div>
+  <div>
+    <h1>
+      List of all students
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new student
+    </h2>
+
+    <form action="/insert_student" method="post">
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name">
+      </div>
+
+      <div>
+        <label for="enrollments_count_box">
+          Enrollments count
+        </label>
+
+        <input type="text" id="enrollments_count_box" name="query_enrollments_count">
+      </div>
+
+      <button>
+        Create student
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Name
+        </th>
+
+        <th>
+          Enrollments count
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_students.each do |a_student| %>
+      <tr>
+        <td>
+          <%= a_student.id %>
+        </td>
+
+        <td>
+          <%= a_student.name %>
+        </td>
+
+        <td>
+          <%= a_student.enrollments_count %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_student.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_student.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/students/<%= a_student.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

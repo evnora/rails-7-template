@@ -1,0 +1,86 @@
+<div>
+  <div>
+    <h1>
+      Behavior #<%= @the_behavior.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/behaviors">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_behavior/<%= @the_behavior.id %>">
+          Delete behavior
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Name
+      </dt>
+      <dd>
+        <%= @the_behavior.name %>
+      </dd>
+
+      <dt>
+        Incidents count
+      </dt>
+      <dd>
+        <%= @the_behavior.incidents_count %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_behavior.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_behavior.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit behavior
+    </h2>
+
+    <form action="/modify_behavior/<%= @the_behavior.id %>"  method="post" >
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name" value="<%= @the_behavior.name %>">
+      </div>
+
+      <div>
+        <label for="incidents_count_box">
+          Incidents count
+        </label>
+
+        <input type="text" id="incidents_count_box" name="query_incidents_count" value="<%= @the_behavior.incidents_count %>">
+      </div>
+
+      <button>
+        Update behavior
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
