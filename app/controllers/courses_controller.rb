@@ -53,4 +53,10 @@ class CoursesController < ApplicationController
 
     redirect_to("/courses", { :notice => "Course deleted successfully."} )
   end
+
+  def new
+    @course = Course.new
+    render({ :template => "courses/new" })
+  end`
+
 end

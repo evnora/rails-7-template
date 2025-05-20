@@ -84,6 +84,8 @@ Rails.application.routes.draw do
   # READ
   get("/courses", { :controller => "courses", :action => "index" })
   
+  get("/courses/new", { :controller => "courses", :action => "new" })
+
   get("/courses/:path_id", { :controller => "courses", :action => "show" })
   
   # UPDATE
@@ -100,5 +102,7 @@ Rails.application.routes.draw do
   # get "/your_first_screen" => "pages#first"
 
   get("/", { :controller => "pages", :action => "home" })
+
+  get("/dashboard", { :controller => "dashboards", :action => "show" })
   
 end

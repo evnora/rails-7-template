@@ -1,0 +1,23 @@
+<!-- app/views/students/new.html.erb -->
+<h1>New Student</h1>
+
+<form action="/insert_student" method="post">
+  <label for="query_name">Name</label>
+  <input id="query_name" name="query_name" type="text" />
+
+  <fieldset>
+    <legend>Enroll in Courses</legend>
+    <% @courses.each do |course| %>
+      <label>
+        <input
+          type="checkbox"
+          name="course_ids[]"
+          value="<%= course.id %>"
+        />
+        <%= course.title %>
+      </label><br />
+    <% end %>
+  </fieldset>
+
+  <input type="submit" value="Create Student" />
+</form>

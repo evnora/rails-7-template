@@ -1,0 +1,14 @@
+<h1>Teacher Behavior Dashboard</h1>
+
+<% @student_behavior_data.each do |student, incidents| %>
+  <h2><%= student.name %></h2>
+  <ul>
+    <% incidents.each do |incident| %>
+      <li>
+        <strong><%= incident.behavior.name %></strong> —
+        <em><%= incident.occurred_at.strftime("%B %d, %Y") %></em>
+        (Course: <%= incident.enrollment.course.title %>)
+      </li>
+    <% end %>
+  </ul>
+<% end %>

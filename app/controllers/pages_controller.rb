@@ -1,8 +1,8 @@
 class PagesController < ApplicationController
-   def home
-     matching_courses = Course.where({})
-     @courses = matching_courses
+  def home
+    @courses  = Course.where({})
+    @students = Student.where({})
 
-     render({ :template => "page_templates/home"})
-   end
- end
+    render({ :template => "page_templates/home" })
+  end
+end

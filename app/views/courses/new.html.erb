@@ -1,0 +1,12 @@
+<!-- app/views/courses/new.html.erb -->
+<h1>New Course</h1>
+
+<form action="/insert_course" method="post">
+  <label for="query_title">Title</label>
+  <input id="query_title" name="query_title" type="text" />
+
+  <label for="query_enrollments_count">Enrollments Count</label>
+  <input id="query_enrollments_count" name="query_enrollments_count" type="number" />
+
+  <input type="submit" value="Create Course" />
+</form>
