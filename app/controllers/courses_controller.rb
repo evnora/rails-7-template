@@ -57,6 +57,6 @@ class CoursesController < ApplicationController
   def new
     @course = Course.new
     render({ :template => "courses/new" })
-  end`
+  end
 
 end
