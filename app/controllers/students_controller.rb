@@ -17,28 +17,6 @@ class StudentsController < ApplicationController
     render({ :template => "students/show" })
   end
 
-  def create
-    the_student = Student.new
-    the_student.name              = params.fetch("query_name")
-    the_student.enrollments_count = 0
-
-    if the_student.valid?
-      the_student.save
-
-      selected = params.fetch("course_ids", [])
-      selected.each do |course_id|
-        the_enrollment               = Enrollment.new
-        the_enrollment.course_id     = course_id
-        the_enrollment.student_id    = the_student.id
-        the_enrollment.incidents_count = 0
-        the_enrollment.save
-      end
-
-      redirect_to("/students", { :notice => "Student created." })
-    else
-      redirect_to("/students", { :alert => "Invalid student." })
-    end
-  end
 
   def update
     the_id = params.fetch("path_id")
@@ -65,9 +43,31 @@ class StudentsController < ApplicationController
   end
 
   def new
-    @student = Student.new
-    @courses = Course.where({})
-    render({ :template => "students/new" })
-  end
+     @student = Student.new
+     @courses = Course.where({})
+     render({ :template => "students/new" })
+   end
+
+   def create
+     the_student             = Student.new
+     the_student.name        = params.fetch("query_name")
+     the_student.enrollments_count = 0
+
+     if the_student.save
+       # for each course_id submitted, make an enrollment
+       selected = params.fetch("course_ids", [])
+       selected.each do |course_id|
+         the_enrollment               = Enrollment.new
+         the_enrollment.course_id     = course_id
+         the_enrollment.student_id    = the_student.id
+         the_enrollment.incidents_count = 0
+         the_enrollment.save
+       end
+
+       redirect_to("/students", { :notice => "Student created." })
+     else
+       redirect_to("/students/new", { :alert => the_student.errors.full_messages.to_sentence })
+     end
+   end
 
 end
