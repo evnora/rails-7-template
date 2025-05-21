@@ -1,62 +1,63 @@
-<!-- app/views/page_templates/home.html.erb -->
- <h1>Homepage</h1>
+<h1>Behavior Tracker</h1>
 
- <section>
-   <h2>Courses</h2>
-   <% if @courses.any? %>
-     <table>
-       <thead>
-         <tr>
-           <th>Title</th>
-           <th>Students</th>
-           <th>Actions</th>
-         </tr>
-       </thead>
-       <tbody>
-         <% @courses.each do |course| %>
-           <tr>
-             <td><%= course.title %></td>
-             <td><%= course.enrollments_count %></td>
-             <td>
-               <a href="/courses/<%= course.id %>">View</a>
-               <a href="/delete_course/<%= course.id %>">Delete</a>
-             </td>
-           </tr>
-         <% end %>
-       </tbody>
-     </table>
-   <% else %>
-     <p>No courses yet. <a href="/courses/new">Add one now</a>.</p>
-   <% end %>
-   <p><a href="/courses/new">Add Course</a></p>
- </section>
+<div class="dashboard">
+  <section>
+    <h2>Courses</h2>
+    <% if @courses.any? %>
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Students</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @courses.each do |course| %>
+            <tr>
+              <td><%= course.title %></td>
+              <td><%= course.enrollments_count %></td>
+              <td>
+                <a href="/courses/<%= course.id %>">View</a>
+                <a href="/delete_course/<%= course.id %>">Delete</a>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <p>No courses yet. <a href="/courses/new">Add one now</a>.</p>
+    <% end %>
+    <p><a href="/courses/new">Add Course</a></p>
+  </section>
 
- <section>
-   <h2>Students</h2>
-   <% if @students.any? %>
-     <table>
-       <thead>
-         <tr>
-           <th>Name</th>
-           <th>Enrollments</th>
-           <th>Actions</th>
-         </tr>
-       </thead>
-       <tbody>
-         <% @students.each do |student| %>
-           <tr>
-             <td><%= student.name %></td>
-             <td><%= student.enrollments_count %></td>
-             <td>
-               <a href="/students/<%= student.id %>">View</a>
-               <a href="/delete_student/<%= student.id %>">Delete</a>
-             </td>
-           </tr>
-         <% end %>
-       </tbody>
-     </table>
-   <% else %>
-     <p>No students yet. <a href="/students/new">Add one now</a>.</p>
-   <% end %>
-   <p><a href="/students/new">Add Student</a></p>
- </section>
+  <section>
+    <h2>Students</h2>
+    <% if @students.any? %>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Enrollments</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @students.each do |student| %>
+            <tr>
+              <td><%= student.name %></td>
+              <td><%= student.enrollments_count %></td>
+              <td>
+                <a href="/students/<%= student.id %>">View</a>
+                <a href="/delete_student/<%= student.id %>">Delete</a>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <p>No students yet. <a href="/students/new">Add one now</a>.</p>
+    <% end %>
+    <p><a href="/students/new">Add Student</a></p>
+  </section>
+</div>
