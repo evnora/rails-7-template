@@ -43,9 +43,9 @@ class StudentsController < ApplicationController
   end
 
   def new
-    @student = Student.new
-    @courses = Course.where({})
-    render({ :template => "students/new" })
+     @student = Student.new
+     @courses = Course.where({})
+     render({ :template => "students/new" })
   end
 
   def create

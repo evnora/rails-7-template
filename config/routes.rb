@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   # READ
   get("/students", { :controller => "students", :action => "index" })
   
-  get("/students/:path_id", { :controller => "students", :action => "show" })
+  get("/students/new",       { :controller => "students", :action => "new" })
+ get("/students/:path_id",  { :controller => "students", :action => "show" })
   
   # UPDATE
   

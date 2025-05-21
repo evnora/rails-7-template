@@ -1,16 +1,22 @@
 <!-- app/views/students/new.html.erb -->
-<h1>New Student</h1>
+ <h1>New Student</h1>
 
-<form action="/insert_student" method="post">
-  <label for="query_name">Name</label>
-  <input id="query_name" name="query_name" type="text" />
+ <form action="/insert_student" method="post">
+   <div>
+     <label for="query_name">Name</label>
+     <input id="query_name" name="query_name" type="text" />
+   </div>
 
-  <label for="course_select">Enroll in Courses</label>
-  <select id="course_select" name="course_ids[]" multiple>
-    <% @courses.each do |course| %>
-      <option value="<%= course.id %>"><%= course.title %></option>
-    <% end %>
-  </select>
+   <div>
+     <label for="course_select">Enroll in Courses</label>
+     <select id="course_select" name="course_ids[]" multiple>
+       <% @courses.each do |course| %>
+         <option value="<%= course.id %>"><%= course.title %></option>
+       <% end %>
+     </select>
+   </div>
 
-  <input type="submit" value="Create Student" />
-</form>
+   <div>
+     <input type="submit" value="Create Student" />
+   </div>
+ </form>
